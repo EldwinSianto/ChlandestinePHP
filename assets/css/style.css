@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+/* --- 1. BASE DARK MODE --- */
+body {
+    background-color: #121212 !important;
+    color: #fff !important;
+    font-family: 'Montserrat', sans-serif !important;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* --- 2. BACKGROUND BLOBS (Fixed biar ikut scroll) --- */
+body::before, body::after {
+    content: '';
+    position: fixed; 
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.5;
+}
+body::before { background: #00dbde; top: -100px; left: -100px; }
+body::after { background: #fc00ff; bottom: -100px; right: -100px; }
+
+/* --- 3. COMPONENT OVERRIDES (CARD) --- */
+.card {
+    background-color: #1e1e1e !important; /* Kartu jadi Abu Gelap */
+    border: 1px solid transparent !important; /* Siapkan border transparan */
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+    color: #fff !important;
+    
+    /* PENTING: Transisi biar geraknya halus */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- LOGIKA BARU: EFEK HOVER KARTU --- */
+.card:hover {
+    transform: translateY(-10px) !important; /* Kartu naik ke atas */
+    border-color: #00dbde !important; /* Border jadi Cyan */
+    box-shadow: 0 15px 40px rgba(0, 219, 222, 0.3) !important; /* Glow Effect */
+    z-index: 10;
+}
+
+.card-header {
+    background-color: transparent !important;
+    border-bottom: 1px solid #333 !important;
+}
+
+/* --- FORM INPUT --- */
+.form-control, .form-select {
+    background-color: #333 !important;
+    border: 1px solid transparent !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    padding: 12px 15px !important;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: none !important;
+    border-color: #00dbde !important; 
+}
+
+/* --- 4. BUTTONS & GRADIENTS --- */
+.btn-primary, .btn-success, .btn-dark, .btn-warning {
+    border: none !important;
+    background-image: linear-gradient(to right, #00dbde, #fc00ff) !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    border-radius: 20px !important;
+    box-shadow: 0 4px 15px rgba(0, 219, 222, 0.4) !important;
+    
+    /* Transisi Halus */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* --- LOGIKA BARU: EFEK HOVER TOMBOL UTAMA --- */
+.btn-primary:hover, .btn-success:hover, .btn-dark:hover, .btn-warning:hover {
+    transform: scale(1.05) translateY(-3px) !important; /* Membesar & Naik */
+    box-shadow: 0 8px 25px rgba(0, 219, 222, 0.6) !important; /* Glow makin terang */
+    filter: brightness(1.2) !important;
+}
+
+.btn:active { 
+    transform: scale(0.95) !important; /* Efek "Mendelep" pas diklik */
+}
+
+/* Tombol Outline (misal Login/Logout) */
+.btn-outline-light, .btn-danger {
+    border-radius: 20px !important;
+    border: 2px solid #fff !important;
+    background: transparent !important;
+    color: #fff !important;
+    box-shadow: none !important;
+    transition: all 0.3s ease !important;
+}
+.btn-outline-light:hover, .btn-danger:hover {
+    background: rgba(255,255,255,0.1) !important;
+    transform: scale(1.05) !important;
+}
+
+/* --- 5. NAVBAR & TABLES --- */
+.navbar {
+    background: rgba(18, 18, 18, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #333;
+}
+
+/* FIX TABEL TRANSPARAN (Yang tadi hilang) */
+.table {
+    --bs-table-bg: transparent; 
+    --bs-table-color: white;   
+    color: #ddd !important;
+    border-color: #333 !important;
+}
+.table td, .table th {
+    background-color: transparent !important;
+    color: white !important;
+}
+.table-hover tbody tr:hover td {
+    background-color: rgba(255,255,255,0.1) !important;
+    color: #00dbde !important;
+}
